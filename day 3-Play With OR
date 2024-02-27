@@ -1,0 +1,11 @@
+class Solution:
+    def game_with_number (self, arr,  n) : 
+        a=[]
+        for i in range(len(arr)):
+           
+            if i != len(arr)-1:
+                b=arr[i]|arr[i+1]
+                a.append(b)
+            else:
+                a.append(arr[len(arr)-1])
+        return a
