@@ -1,0 +1,15 @@
+class Solution:
+    def duplicates(self, arr, n):
+        a=set(arr)
+        b=[]
+        for i in arr:
+            if i not in a:
+                a.append(i)
+            elif i in a and i not in b:
+                b.append(i)
+        if len(b)==0:
+            return [-1]
+        else:
+            b.sort()
+            set(b)
+            return b
