@@ -1,0 +1,18 @@
+class Solution:
+    def findTwoElement( self,arr, n): 
+        actual_sum = sum(arr)
+        actual_sum_of_squares = sum(x*x for x in arr)
+    
+        expected_sum = n * (n + 1) // 2
+        expected_sum_of_squares = n * (n + 1) * (2*n + 1) // 6
+    
+        diff_sum = expected_sum - actual_sum
+        diff_sum_of_squares = expected_sum_of_squares - actual_sum_of_squares
+    
+    # Find the missing number (A) and the duplicate number squared (B)
+        b_squared = diff_sum_of_squares // diff_sum
+        a = (diff_sum + b_squared) // 2
+        b = b_squared - a
+    
+        return b,a
+    
