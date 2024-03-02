@@ -1,0 +1,13 @@
+class Solution:
+    def majorityElement(self, A, N):
+        b={}
+        for i in A:
+            b[i]=b.get(i,0)+1
+        d=max(b.values())
+        if d<=N/2:
+            return -1
+        else:
+            for j in b:
+                if b[j]==d:
+                    return(j)
+        
