@@ -1,0 +1,12 @@
+class Solution:
+    def equilibriumPoint(self,A, N):
+        ans = -1 
+        total = sum(A)  
+        left_sum = 0
+        
+        for i in range(N):
+            if left_sum == total - A[i] - left_sum:  
+                return i + 1
+            left_sum += A[i]
+        
+        return ans
