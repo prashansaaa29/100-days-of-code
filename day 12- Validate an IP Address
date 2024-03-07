@@ -1,0 +1,10 @@
+def isValid(s):
+    l = s.split('.')
+    if len(l)!=4:
+        return 0
+        
+    for i in l:
+        if len(i)==0 or len(i)>3 or (len(i)>1 and i[0]=='0') or i.isdigit()==False or int(i)<0 or int(i)>255:
+            return 0
+
+    return 1
