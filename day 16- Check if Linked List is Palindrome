@@ -1,0 +1,10 @@
+class Solution:
+    def isPalindrome(self, head):
+        #code here
+        s=""
+        while head :
+            s+= str(head.data)
+            head = head.next 
+        if s==s[::-1] and s!= "":
+            return True 
+        else : return False
