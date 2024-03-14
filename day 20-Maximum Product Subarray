@@ -1,0 +1,23 @@
+class Solution:
+
+
+	def maxProduct(self,arr, n):
+	    if not arr:
+            return 0
+        pref = arr[0]
+        suff = arr[0]
+        max_product = arr[0]
+ 
+        for num in arr[1:]:
+        
+            if num < 0:
+                pref, suff = suff, pref
+            
+            pref = max(num, pref * num)
+            suff = min(num, suff * num)
+ 
+           
+            max_product = max(max_product, pref)
+ 
+        return max_product
+	    
