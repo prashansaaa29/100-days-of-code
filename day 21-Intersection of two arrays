@@ -1,0 +1,6 @@
+class Solution:
+    def NumberofElementsInIntersection(self,a, b, n, m):
+        l=set(a)
+        p=set(b)
+        k=l.intersection(p)
+        return len(k)
