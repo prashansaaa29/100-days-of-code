@@ -1,0 +1,9 @@
+class Solution:
+	def hasArrayTwoCandidates(self,arr, n, x):
+	    seen = set()
+        for num in arr:
+            complement = x - num
+            if complement in seen:
+                return True
+            seen.add(num)
+        return False
