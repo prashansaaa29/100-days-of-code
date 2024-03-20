@@ -1,0 +1,6 @@
+class Solution:
+    def segregateElements(self, arr, n):
+        positive = [num for num in arr if num >= 0]
+        negative = [num for num in arr if num < 0]
+    
+        arr[:n] = positive + negative
