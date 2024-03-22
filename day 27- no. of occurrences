@@ -1,0 +1,5 @@
+class Solution:
+
+	def count(self,arr, n, x):
+	    a=arr.count(x)
+	    return a
