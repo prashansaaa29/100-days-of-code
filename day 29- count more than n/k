@@ -1,0 +1,16 @@
+class Solution:
+    
+    #Function to find all elements in array that appear more than n/k times.
+    def countOccurence(self,a,n,k):
+        f=n//k   
+        count=0
+        map={}
+        for i in range(n):
+            if a[i] not in map:
+                map[a[i]]=1
+            else:
+                map[a[i]]+=1
+        for i in set(a):
+            if map[i]>f:
+                count+=1
+        return count
