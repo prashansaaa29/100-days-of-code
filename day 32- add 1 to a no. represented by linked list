@@ -1,0 +1,14 @@
+class Solution:
+    def addOne(self,head):
+        arr=[]
+        while head:
+            arr.append(head.data)
+            head=head.next
+        stringe=""
+        for i in arr:
+            stringe+=str(i)
+        num=str(int(stringe)+1)
+        new=LinkedList()
+        for i in range(len(num)):
+            new.insert(int(num[i]))
+        return new.head
