@@ -1,0 +1,8 @@
+def removeDuplicates(head):
+    d=head
+    while d and d.next:
+        if d.data == d.next.data:
+            d.next=d.next.next
+        else:
+            d=d.next
+    return head
