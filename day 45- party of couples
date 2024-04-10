@@ -1,0 +1,12 @@
+class Solution:
+    def findSingle(self, n, arr):
+        res = {}
+        for elem in arr:
+            try:
+                res[elem] += 1
+            except:
+                res[elem] = 1
+                
+        for ele in res:
+            if (res[ele]%2!=0):
+                return ele
