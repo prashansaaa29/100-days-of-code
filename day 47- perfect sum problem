@@ -1,0 +1,12 @@
+class Solution:
+	def perfectSum(self, arr, n, sum):
+	    dp = [0]*(sum + 1)
+		dp[0] = 1
+		
+		for i in arr:
+		    
+		    temp = dp[:]
+		    for j in range(i, sum + 1):
+		        dp[j] += temp[j - i]
+
+		return dp[sum]%(10**9+7)
