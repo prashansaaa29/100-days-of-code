@@ -1,0 +1,7 @@
+class Solution:
+    #Complete the below function
+    def search(self,arr, N, X):
+        if X not in arr:
+            return -1
+        else:
+            return arr.index(X)
