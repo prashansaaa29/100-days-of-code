@@ -1,0 +1,6 @@
+from collections import Counter
+class Solution:
+    def findMissing(self,a,b,n,m):
+        d = Counter(b)
+        res = [i for i in a if i not in d]
+        return res
