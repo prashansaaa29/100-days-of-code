@@ -1,0 +1,26 @@
+class Solution:
+    def minJumps(self, arr, n):
+        if n == 1:
+            return 0
+        elif arr[0] == 0:
+            return -1
+        
+        else:
+            arr.reverse()
+            previous_i = 0
+            count = 0
+        while True:
+            list_of_qualifieds_by_indexes = []
+            for i in range(previous_i,n):
+                needed_value = i - previous_i
+                if needed_value == 0:
+                    continue
+                elif arr[i]>=needed_value:
+                    list_of_qualifieds_by_indexes += [i]
+            if list_of_qualifieds_by_indexes == []:
+                return -1
+            previous_i = list_of_qualifieds_by_indexes[-1]
+            count += 1
+            if previous_i == n-1:
+                break
+        return count
