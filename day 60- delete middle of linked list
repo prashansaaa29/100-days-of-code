@@ -1,0 +1,18 @@
+class Solution:
+    def deleteMid(self,head):
+        n=0
+        temp1=head
+        while temp1 !=None:
+            n+=1
+            temp1=temp1.next
+        
+        if n<=1:
+            return None
+        n//=2
+        
+        temp2=head
+        while n>1:
+            temp2=temp2.next
+            n-=1
+        temp2.next=temp2.next.next
+        return head
