@@ -1,0 +1,16 @@
+class Solution:
+    def deleteK(self, head, k):
+        if k == 1: return None
+        
+        count,curr = 1,head
+        
+        while curr:
+            
+            if count == k-1 and curr.next:
+                curr.next = curr.next.next
+                count = 0
+                
+            
+            count,curr = count +1,curr.next
+            
+        return head
