@@ -1,0 +1,10 @@
+class Solution:
+    def KDistance(self,root,k):
+        queue = [[root, 0]]
+        res = []
+        for [node, depth] in queue:
+            if(depth == k):
+                res.append(node.data)
+            node.left and queue.append([node.left, depth+1])
+            node.right and queue.append([node.right, depth+1])
+        return res
