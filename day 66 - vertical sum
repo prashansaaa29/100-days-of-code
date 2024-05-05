@@ -1,0 +1,25 @@
+from collections import defaultdict
+
+'''
+# Node Class:
+class Node:
+    def __init__(self,val):
+        self.data = val
+        self.left = None
+        self.right = None
+'''
+class Solution:
+    #Complete the function below
+    def verticalSum(self, root):
+        #:param root: root of the given tree.
+        temp = defaultdict(int)
+        def f(root,pos):
+            if root == None:
+                return 
+            temp[pos] += root.data
+            f(root.left,pos - 1)
+            f(root.right,pos + 1)
+        
+        f(root,0)
+        extra = sorted(temp)
+        return [temp[one] for one in extra]
