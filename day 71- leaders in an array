@@ -1,0 +1,23 @@
+class Solution:
+    #Back-end complete function Template for Python 3
+    
+    #Function to find the leaders in the array.
+    def leaders(self, A, N):
+        
+        res = []
+        
+        
+        mx = float("-INF")
+        
+        
+        for num in reversed(A):
+            
+            
+            if num >= mx:
+                
+                res.append(num)
+                
+                mx = num
+                
+                
+        return res[::-1]
