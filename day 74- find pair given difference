@@ -1,0 +1,16 @@
+from typing import List
+
+
+class Solution:
+    def findPair(self, n : int, x : int, arr : List[int]) -> int:
+        arr.sort()
+
+        lo = 0
+        for hi in range(1, n):
+            while lo<hi-1 and arr[hi] - arr[lo] > x:
+                lo += 1
+            if arr[hi] - arr[lo] == x:
+                return 1
+            hi += 1
+            
+        return -1
