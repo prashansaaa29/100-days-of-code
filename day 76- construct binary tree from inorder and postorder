@@ -1,0 +1,11 @@
+class Solution:
+    def buildTree(self, In, post, n):
+        if not In: return None
+        
+        mid = post.pop()
+        midInd = In.index(mid)
+        newNode = Node(mid)
+        newNode.right = self.buildTree(In[midInd+1:], post, n)
+        newNode.left = self.buildTree(In[:midInd], post, n)
+        
+        return newNode
