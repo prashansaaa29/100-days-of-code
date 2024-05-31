@@ -1,0 +1,3 @@
+class Solution:
+    def swapNibbles (self, n):
+        return int(format(n,'08b')[4:]+format(n,'08b')[:-4],2)
