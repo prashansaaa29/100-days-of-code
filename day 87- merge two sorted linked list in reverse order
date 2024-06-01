@@ -1,0 +1,18 @@
+class Solution:
+    def mergeResult(self, h1, h2):
+        if not h1 and not h2:return
+        s=[]
+        while h1:
+            s.append(h1.data)
+            h1=h1.next
+        while h2:
+            s.append(h2.data)
+            h2=h2.next
+        s.sort(reverse=True)
+        head = Node(s[0])
+        current = head
+        for i in s[1:]:
+            if current is not None:
+                current.next=Node(i)
+                current=current.next
+        return head
