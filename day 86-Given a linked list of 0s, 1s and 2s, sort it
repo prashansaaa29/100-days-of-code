@@ -1,0 +1,32 @@
+class Solution:
+    #Function to sort a linked list of 0s, 1s and 2s.
+    def segregate(self, head):
+        if not head:
+            return None
+        curr=head
+        a,b,c=0,0,0
+        
+        while curr is not None:
+            if curr.data==0:
+                a=a+1
+            if curr.data==1:
+                b=b+1
+            if curr.data==2:
+                c=c+1
+            curr=curr.next
+            
+        result=head
+        while a>0:
+            result.data=0
+            result=result.next
+            a=a-1
+        while b>0:
+            result.data=1
+            result=result.next
+            b=b-1
+        while c>0:
+            result.data=2
+            result=result.next
+            c=c-1
+        return head 
+        
