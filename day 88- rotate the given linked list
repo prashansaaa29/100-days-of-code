@@ -1,0 +1,25 @@
+class Solution:
+    
+    #Function to rotate a linked list.
+    def rotate(self, head, k):
+        if head is None:
+            return None
+        l=0
+        a=[]
+        b=[]
+        curr=head
+        while curr is not None:
+            if l<k:
+                a.append(curr.data)
+            else:
+                b.append(curr.data)
+            l=l+1
+            curr=curr.next
+        c=b+a
+        result=head
+        if result is not None:
+            for i in c:
+                result.data=i
+                result=result.next
+        return head 
+        
