@@ -1,0 +1,12 @@
+class Solution:
+    #Function to check if the linked list has a loop.
+    def detectLoop(self, head):
+        dub=head
+        slow=dub
+        fast=dub.next
+        while fast and fast.next:
+            if slow==fast:
+                return True
+            slow=slow.next
+            fast=fast.next.next
+        return False
