@@ -1,0 +1,14 @@
+class Solution:
+
+	def matchPairs(self, n, nuts, bolts):
+	   l=['!','#','$','%','&','*','?','@','^']
+	   for i in l:
+	        a=[]
+	        b=[]
+	        for i in l:
+	            if i in nuts:
+	                a.append(i)
+	            if i in bolts:
+	                b.append(i)
+	        nuts[:]=a
+	        bolts[:]=b
