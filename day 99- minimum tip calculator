@@ -1,0 +1,24 @@
+from typing import List
+
+
+class Solution:
+    def maxTip(self, n : int, x : int, y : int, arr : List[int], brr : List[int]) -> int:
+        diffs = sorted((abs(x-y), i) for i, (x, y) in enumerate(zip(arr, brr)))
+        
+        ans = 0
+        while diffs and (x > 0 or y > 0):
+            _, i = diffs.pop()
+            if x == 0:
+               ans += brr[i]
+               y -= 1
+            elif y == 0:
+                ans += arr[i]
+                x -= 1
+            else:
+                if arr[i] > brr[i]:
+                    ans += arr[i]
+                    x -= 1
+                else:
+                    ans += brr[i]
+                    y -= 1
+        return ans
