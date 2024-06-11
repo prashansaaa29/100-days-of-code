@@ -1,0 +1,14 @@
+class Solution:
+    def maxLength(self, s):
+        n = len(s)
+        stack = []
+        maxlength = [0]*(n+1)
+        for currindex in range(n):
+            if s[currindex] == '(':
+                stack.append(currindex)
+            else:
+                if stack:
+                    lastindex = stack.pop()
+                    maxlength[currindex] = currindex-lastindex+1+maxlength[lastindex-1]
+        return max(maxlength)
+        
