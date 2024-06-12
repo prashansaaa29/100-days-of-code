@@ -1,0 +1,19 @@
+class Solution:
+    
+    #Function to find maximum of each subarray of size k.
+    def max_of_subarrays(self,arr,n,k):
+        q = []
+        answer = []
+        for i in range(k):
+            while q and arr[i]>=arr[q[-1]]:
+                q.pop()
+            q.append(i),
+        for i in range(k, n):
+            answer.append(arr[q[0]])
+            while q and q[0] <= i-k:
+                q.pop(0) #pop(0) is O(N)
+            while q and arr[i]>=arr[q[-1]]:
+                q.pop()
+            q.append(i)
+        answer.append(arr[q[0]])
+        return answer
