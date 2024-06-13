@@ -1,0 +1,14 @@
+left = 0
+        right = n - 1
+
+        while left < right:
+            if M[left][right] == 1:
+                left += 1
+            else:
+                right -= 1
+    
+        #Verify if left is a celebrity
+        for i in range(n):
+            if i != left and (M[i][left] == 0 or M[left][i] == 1):
+                return -1
+        return left if sum(M[left]) == 0 else -1
