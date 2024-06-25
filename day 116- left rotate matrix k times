@@ -1,0 +1,13 @@
+class Solution:
+    def rotateMatrix(self, k, mat):
+        n=len(mat) # to get row
+        m=len(mat[0]) # to get column
+
+        # defining mat2, initializing every element with zero.
+        mat2=[[0 for _ in range(m)] for _ in range(n)]
+        k=k%m # if k is beyond column length 
+        for i in range(n):
+            for j in range(m):
+                mat2[i][(m-k+j)%m]=mat[i][j]
+        
+        return mat2
