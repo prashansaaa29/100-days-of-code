@@ -1,0 +1,12 @@
+def compute(head):
+    string = ""
+    
+    # Traverse the linked list
+    while head:
+        # Append the data of each node to the string
+        string += head.data
+        # Move to the next node
+        head = head.next
+    
+    # Check if the constructed string is equal to its reverse
+    return string == string[::-1]
