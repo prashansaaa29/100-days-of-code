@@ -1,0 +1,25 @@
+class Node:
+
+    def __init__(self, val):
+        self.right = None
+        self.data = val
+        self.left = None
+        self.next = None
+
+
+class Solution:
+
+    def populateNext(self, root):
+        prev = None
+        
+        def populate(n):
+            nonlocal prev
+            if not n:
+                return
+            populate(n.left)
+            if prev:
+                prev.next = n
+            prev = n
+            populate(n.right)
+        populate(root)
+        return root
