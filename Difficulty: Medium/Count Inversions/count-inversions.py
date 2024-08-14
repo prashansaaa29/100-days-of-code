@@ -17,8 +17,6 @@ class Solution:
                     temp_arr[k] = arr[i]
                     i += 1
                 else:
-                    # There are mid - i inversions because all the remaining elements in the left subarray
-                    # (arr[i], arr[i+1], ..., arr[mid]) are greater than arr[j]
                     temp_arr[k] = arr[j]
                     inv_count += (mid - i + 1)
                     j += 1
@@ -56,37 +54,6 @@ class Solution:
 
         temp_arr = [0] * n
         return merge_sort_and_count(arr, temp_arr, 0, n - 1)
-    
-        '''
-        def mergeSort(arr, l, r):
-        m=len(arr)//2
-        left=arr[l:m+1]
-        right=arr[m+1:r+1]
-        
-        mergeSort(left,0,len(left))
-        mergeSort(right,0,len(right))
-        
-        a=0
-        b=0
-        c=0
-        while a<len(left) and b<len(right):
-            if left[a]<right[c]:
-                arr[b]=left[a]
-                a=a+1
-            elif left[a]>right[c]:
-                arr[b]=right[c]
-                c=c+1
-            b=b+1
-            
-            
-        while a<len(left):
-            arr[b]=left[a]
-            a=a+1
-            b=b+1
-        while c<len(right):
-            arr[b]=left[c]
-            c=c+1
-            b=b+1'''
                     
             
         # Your Code Here
