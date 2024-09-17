@@ -1,19 +1,18 @@
 #User function Template for python3
 
 class Solution:
-    def getMinDiff(self, arr, n, k):
+    def getMinDiff(self, arr,k):
+        n = len(arr)
+        if n == 1:
+            return 0
         arr.sort()
-        ans=arr[n-1]-arr[0]
-        cur_min=arr[0]
-        cur_max=arr[n-1]
-        for i in range(1,n):
-            if arr[i]<k:
-                continue
-            cur_min=min(arr[0]+k,arr[i]-k)
-            cur_max=max(arr[n-1]-k,arr[i-1]+k)
-            ans=min(ans,cur_max-cur_min)
-        return ans
-    
+        a, s, l = arr[-1] - arr[0], arr[0] + k, arr[-1] - k
+        for i in range(n - 1):
+            m = min(s, arr[i + 1] - k)
+            M = max(l, arr[i] + k )
+            if m >= 0:
+                a = min(a, M - m)
+        return a
         # code here
 
 
@@ -25,10 +24,10 @@ if __name__ == '__main__':
     tc = int(input())
     while tc > 0:
         k = int(input())
-        n = int(input())
+        # n = int(input())
         arr = list(map(int, input().strip().split()))
         ob = Solution()
-        ans = ob.getMinDiff(arr, n, k)
+        ans = ob.getMinDiff(arr, k)
         print(ans)
         tc -= 1
 
