@@ -3,7 +3,10 @@ class Solution:
     
     # Note that the size of the array is n-1
     def missingNumber(self, n, arr):
-        return ((n*(n+1))//2)-sum(arr)
+        s=n*(n+1)//2
+        arr=sum(arr)
+        return s-arr
+        
         
         # code here
 
