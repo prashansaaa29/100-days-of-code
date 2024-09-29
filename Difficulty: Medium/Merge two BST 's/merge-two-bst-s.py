@@ -4,37 +4,67 @@
 
 # } Driver Code Ends
 #User function Template for python3
+class GeneratorWrapper:
+    def __init__(self, generator):
+        self.generator = generator
+        self._buffer = None
+        self._exhausted = False
+        self._prime()
+
+    def _prime(self):
+        if not self._exhausted and self._buffer is None:
+            try:
+                self._buffer = next(self.generator)
+            except StopIteration:
+                self._buffer = None
+                self._exhausted = True
+
+    def has_next(self):
+        return not self._exhausted
+
+    def get_next(self):
+        if self._exhausted:
+            raise StopIteration("No more elements in the generator")
+        result = self._buffer
+        self._buffer = None
+        self._prime()
+        return result
+
+    def peek_next(self):
+        if self._exhausted:
+            raise StopIteration("No more elements in the generator")
+        return self._buffer
+
 class Solution:
     def merge(self, root1, root2):
-        a=[]
-        b=[]
-        ans=[]
-        def trav(root,arr):
-            if root==None:
-                return 
-            trav(root.left,arr)
-            arr.append(root.data)
-            trav(root.right,arr)
-        trav(root1,a)
-        trav(root2,b)
-        n=len(a)
-        m=len(b)
-        l=0
-        r=0
-        while l<n and r<m:
-            if a[l]<=b[r]:
-                ans.append(a[l])
-                l+=1
-            elif a[l]>b[r]:
-                ans.append(b[r])
-                r+=1
-        if l==n:
-            ans.extend(b[r:m])
-        else:
-            ans.extend(a[l:n])
+        # code here
+        # need to use generators for root1 and root2 and access them on demand
+        gen1 = GeneratorWrapper(self.dfs(root1))
+        gen2 = GeneratorWrapper(self.dfs(root2))
+        
+        ans = []
+        while gen1.has_next() and gen2.has_next():
+            if gen1.peek_next() < gen2.peek_next():
+                ans.append(gen1.get_next())
+            else:
+                ans.append(gen2.get_next())
+        
+        while gen1.has_next():
+            ans.append(gen1.get_next())
+        
+        while gen2.has_next():
+            ans.append(gen2.get_next())
+        
         return ans
         
-        # code here
+    
+    def dfs(self,node):
+        if node.left:
+            yield from self.dfs(node.left)
+        if node:
+            yield node.data
+        if node.right:
+            yield from self.dfs(node.right)
 
 #{ 
  # Driver Code Starts.
