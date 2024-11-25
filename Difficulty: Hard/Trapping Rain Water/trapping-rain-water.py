@@ -1,51 +1,47 @@
 
 class Solution:
     def trappingWater(self, arr):
-        max_left=0
-        max_right=0
-        l=0
-        r=len(arr)-1
-        water=0
-        if len(arr)<3:
-            return(0)
-        while l<r:
-            max_left=max(max_left,arr[l])
-            max_right=max(max_right,arr[r])
-            if max_left<=max_right:
-                water=water+(max_left-arr[l])
-                l=l+1
-            else:
-                water=water+(max_right-arr[r])
-                r=r-1
-        return water
-                
-                
+        max_left=[0]*len(arr)
+        for x in range(1,len(arr)):
+            max_left[x]=max(arr[x-1],max_left[x-1])
+        max_right=[0]*len(arr)
+        for x in range(len(arr)-2,-1,-1):
+            max_right[x]=max(arr[x+1],max_right[x+1])
+        res=0
+        for x in range(len(arr)):
+            waterlevel=min(max_left[x],max_right[x])
+            if waterlevel>=arr[x]:
+                res=res+(waterlevel-arr[x])
+        return res
             
-            
-            
-            
-            
-        #Code here
+        
+        
+        
+        
+        
+        
+        
+        
+        # code here
 
 
 #{ 
  # Driver Code Starts
-#Initial Template for Python 3
+#Initial template for Python 3
 
 import math
 
 
 def main():
-    T = int(input())
-    while (T > 0):
-
-        n = int(input())
+    t = int(input())
+    while (t > 0):
 
         arr = [int(x) for x in input().strip().split()]
         obj = Solution()
         print(obj.trappingWater(arr))
 
-        T -= 1
+        t -= 1
+        print("~")
 
 
 if __name__ == "__main__":
